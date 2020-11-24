@@ -1,11 +1,30 @@
 import React, { useState } from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+import { connect } from 'react-redux';
+import { register } from '../../Redux/actions/authActions';
 
-const Register = () => {
+const Register = ({ history, register }) => {
 	// state values
 	const [username, setUsername] = useState("");
 	const [fullName, setFullName] = useState("");
 	const [password, setPassword] = useState("");
+
+  // function to handle the form submission
+  const handleFormSubmission = (e) => {
+
+    // prevent defualt action
+    e.preventDefault();
+
+    // create a new user
+    const newUser = {
+      username,
+      fullName, 
+      password
+    }
+
+    // register the user and redirect to the posts page
+    register(newUser, () => history.push('/posts'));
+  }
 
 	return (
 		<div className="register-form">
@@ -45,7 +64,7 @@ const Register = () => {
 							placeholder="Password"
 						/>
 					</FormGroup>
-					<Button color="primary" block>
+					<Button color="primary" block onClick={handleFormSubmission}>
 						Register
 					</Button>
 					<small className="mt-2">
@@ -58,4 +77,4 @@ const Register = () => {
 	);
 };
 
-export default Register;
+export default connect(null, { register })(Register);
