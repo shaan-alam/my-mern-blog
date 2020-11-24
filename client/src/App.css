@@ -1,0 +1,38 @@
+.register-form {
+  height: 90vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+}
+
+
+.register-form .form {
+  padding: 2rem;
+  border-radius: 7px;
+}
+
+.posts {
+  margin: 3rem 0;
+}
+
+.posts h1 {
+  margin-bottom: 1rem;
+}
+
+.post {
+  padding: 1.5rem;
+  border-radius: 7px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.0923);
+}
+
+
+nav a {
+  color: #333;
+  margin-right: 20px;
+}
+
+nav a:hover {
+  text-decoration: none;
+}
