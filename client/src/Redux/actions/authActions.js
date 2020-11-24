@@ -4,6 +4,8 @@ import {
 	LOGIN_FAIL,
 	LOGIN_SUCCESS,
 	LOGOUT,
+  REGISTER_SUCCESS,
+  REGISTER_FAIL
 } from "./types";
 import axios from "axios";
 import { getMessages, clearMessages } from "../actions/creators";
@@ -25,6 +27,20 @@ export const login = ({ username, password }, redirect) => (dispatch) => {
 			dispatch(getMessages({color: 'danger', text: err.response.data.message }))
 		});
 };
+
+// register functionality 
+export const register = ({ username, fullName, password }, redirect) => dispatch => {
+  axios
+    .post('/auth/register', { username, fullName, password })
+    .then(res => {
+      dispatch({ type: REGISTER_SUCCESS, payload: res.data });
+
+      dispatch(clearMessages());
+
+      // redirect to posts
+      redirect();
+    })
+}
 
 // logout
 export const logout = (redirect) => {

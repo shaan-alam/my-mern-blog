@@ -2,7 +2,9 @@ import {
 	AUTH_ERROR,
 	LOGIN_FAIL,
 	LOGIN_SUCCESS,
-	LOGOUT,
+	LOGOUT, 
+  REGISTER_FAIL,
+  REGISTER_SUCCESS
 } from "../actions/types";
 
 // initial state
@@ -16,6 +18,7 @@ const initialState = {
 const auth = (state = initialState, action) => {
 	switch (action.type) {
 		case LOGIN_SUCCESS:
+    case REGISTER_SUCCESS:
 			return {
 				...state,
 				isAuthenticated: true,
